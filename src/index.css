@@ -11,3 +11,102 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* variables */
+:root{
+    --main-color:#eaa023;
+    --dark:#0c1023;
+    --dark-light:#191f3a;
+    --white:#fff;
+    --white-light:#c8c8c8c8;
+    --shadow: 0 0 15px rgba(0,0,0,0.25);
+    --cursive-font:'Dancing Script', cursive;
+    scroll-behavior: smooth;
+
+
+}
+
+
+/* global settings */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: var(--white);
+    background-color: rgba(238, 235, 235, 0.541);
+}
+
+::after,
+::before{
+    box-sizing: border-box;
+}
+img{
+    vertical-align: middle;
+    max-width: 100%;
+}
+ul{
+    list-style: none;
+}
+
+h1{
+    font-weight: 700;
+   
+}
+
+h2{
+    font-weight: 600;
+ 
+}
+
+h3,
+h4,
+h5,
+h6{
+    font-weight: 500;
+  
+}
+
+a{
+    text-decoration: none;
+}
+p{
+    font-size: 16px;
+    
+}
+
+section{
+    overflow: hidden;
+}
+.min-vh-100{
+    min-height: 100vh;
+}
+
+.container{
+    max-width: 1170px;
+    margin: auto;
+    
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.justify-content-between{
+    justify-content: space-between;
+    
+}
+.align-item-center{
+    align-items: center;
+}

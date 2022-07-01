@@ -1,0 +1,52 @@
+.productlist{
+    margin: 20px 0;
+   
+   &__row{
+    gap: 10px;
+   }
+
+   &__left,&__right{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    }
+   
+    &__left{
+        width: 300px;
+        // display: none;
+       
+    }
+    &__right{
+        position: relative;
+        flex: 1 1 0;
+        gap: 10px;
+       
+    }
+    &__loading{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+        background-color: rgba(80, 80, 80, 0.096);
+        z-index: 11;
+    }
+
+    &__row{
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    
+    &__pagination{
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

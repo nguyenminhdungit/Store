@@ -1,0 +1,22 @@
+.banner{
+        position: relative;
+    
+    &__thumbnail{
+        margin-bottom: 80px;
+       width: 100%;
+      
+    }
+    &__img{
+        display: block;
+        margin: 0 auto;
+        
+    }
+    &__slider{
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%,-50%);
+        width: 80%;
+        margin: 0 auto;
+    }
+}

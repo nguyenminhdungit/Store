@@ -1,0 +1,22 @@
+
+.prouductSort{
+    margin-bottom:  10px ;
+    padding: 10px 0;
+    box-shadow:0px 1px 10px #ccc;
+
+    .MuiTab-wrapper{
+        font-weight: 600;
+    }
+
+}
+@media screen and(max-width:390px){
+    .prouductSort{ 
+    
+        .MuiTab-wrapper{
+            font-weight: 600;
+            font-size: 11px;
+        }
+    
+    }
+    
+}

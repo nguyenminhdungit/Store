@@ -1,0 +1,142 @@
+.product{
+    position: relative;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    width: calc(25% - 10px);
+    min-height: 250px;
+    margin-top: 20px;
+    padding: 10px 10px;
+
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 5px;
+
+    background-color: #fff;
+    transition: all 0.2s linear;
+    overflow: hidden;
+   
+
+    &__overflow{
+        position: absolute;
+        top: 0;
+        left: 200%;
+        // left: 0;
+
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+
+        transition: 0.3s linear;
+        background-color: #bfc7f56e;
+        &:hover span:first-child{
+            animation: spin01 0.5s ease ;
+            transform: translateX(0);
+            
+        }
+        &:hover span:nth-child(2){
+            animation: spin01 1s ease ;
+            transform: translateX(0);
+            
+        }
+        &:hover span:last-child{
+            animation: spin01 1.5s ease ;
+            transform: translateX(0);
+            
+        }
+    }
+    
+    &__icon{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 26px;
+        height: 100%;
+        & span {
+            // position: absolute;
+            // transform: translateX(200px);
+            cursor: pointer;
+            transition: 0.2s linear;
+           
+            &:hover{
+                color: white;
+            }
+        }
+    }
+    @keyframes spin01{
+
+        0%{
+            transform: translateX(100px);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+ 
+    &:hover &__overflow {
+        left: 0;
+    }
+ 
+   
+    
+    &__img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 0;
+        & img{
+            // width: 200px;
+        }
+    }
+    &__name{
+       
+        width: 100%;
+        margin: 10px 0px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    &__price{
+        width: 100%;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    &__originalPrice,&__promotionPercent{
+        font-size: 10px;
+    }
+    &__originalPrice{
+        text-decoration: line-through;
+        margin-left: 5px;
+    }
+
+    &__skeleton{
+        width: 100%;
+        height: 100%;
+    }
+
+    
+}
+
+@media screen and(max-width:1023px) {
+    .product{
+        width: calc(33.3% - 10px);
+    }
+    
+}
+@media screen and(max-width:813px) {
+    .product{
+        width: calc(33.3% - 10px);
+    }
+    
+}
+@media screen and(max-width:390px) {
+    .product{
+        width: calc(50% - 10px);
+    }
+    
+}
