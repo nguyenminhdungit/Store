@@ -42,6 +42,7 @@ function SliderFeature({ data = [...Array(9)], count = 1, slider = [] }) {
           arrows: false,
           centerMode: true,
           centerPadding: '40px',
+          slidesToScroll: 1,
           slidesToShow: 1,
         },
       },

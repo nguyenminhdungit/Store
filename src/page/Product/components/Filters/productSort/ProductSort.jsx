@@ -11,7 +11,7 @@ ProductSort.propTypes = {
 function ProductSort({ currentSort = 'salePrice:ASC', handleChange = null }) {
   //   console.log(currentSort);
   const handleChangeSort = (e, newFilter) => {
-    console.log(newFilter);
+    // console.log(newFilter);
     if (!handleChange) return;
     handleChange(newFilter);
   };

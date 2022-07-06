@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './app.scss';
-import Header from 'components/header';
 import Footer from 'components/Footer';
+import Header from 'components/header';
+import './app.scss';
 
-import { Redirect, Route, Switch } from 'react-router-dom';
+import Notfound from 'components/NotFound/Notfound';
+import FeatureCart from 'features/Cart';
 import Home from 'page/Home';
 import ProductPage from 'page/Product';
-import Notfound from 'components/NotFound/Notfound';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" component={Home} exact />
           <Route path="/home" component={Home} />
           <Route path="/product" component={ProductPage} />
+          <Route path="/cart" component={FeatureCart} />
           <Route component={Notfound} exact />
         </Switch>
       </div>

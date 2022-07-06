@@ -110,3 +110,12 @@ section{
 .align-item-center{
     align-items: center;
 }
+.text-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .text-clamp--2 {
+    -webkit-line-clamp: 2;
+  }

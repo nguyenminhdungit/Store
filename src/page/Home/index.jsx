@@ -40,7 +40,7 @@ function Home(props) {
       <div className="container">
         <SliderCategory categoryId={6} title=" điện thoại giảm giá sốc" />
         <SliderCategory categoryId={4} title=" laptop giảm siêu sale" />
-        <SliderCategory categoryId={3} title=" thơi trang giảm giá sốc" />
+        <SliderCategory categoryId={1} title=" thơi trang giảm giá sốc" />
       </div>
     </section>
   );

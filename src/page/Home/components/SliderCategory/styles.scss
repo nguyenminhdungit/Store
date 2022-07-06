@@ -54,8 +54,11 @@
 @media screen and(max-width:819px) {
     
 }
-@media screen and(max-width:390px) {
+@media screen and(max-width:450px) {
     .category{
+        &:first-child{
+            margin-top: 50px;
+        }
         &__title{
            
              & h2{
