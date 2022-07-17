@@ -7,6 +7,8 @@ import SkeletonProduct from '../skeleton/Skeleton';
 import { useDispatch } from 'react-redux';
 import './styles.scss';
 import { addToCart } from 'features/Cart/CartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 Product.propTypes = {};
 
@@ -19,16 +21,17 @@ function Product({ product = {} }) {
 
   const history = useHistory();
   const handleClickAddToCart = () => {
-    console.log(product.id);
     const action = addToCart({
       id: product.id,
       product,
       quantity: 1,
     });
+    toast.success('them vao gio hang thanh cong!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
     dispatch(action);
-
-    // history.push(`/products/${product.id}`);
   };
+
   const handleClickView = () => {
     history.push(`/product/${product.id}`);
   };

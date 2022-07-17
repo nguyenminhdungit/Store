@@ -1,5 +1,6 @@
 import Pagination from '@material-ui/lab/Pagination';
 import productApi from 'api/productApi';
+import { addToCart } from 'features/Cart/CartSlice';
 import FilterByCategorys from 'page/Product/components/Filters/FilterByCategorys/FilterByCategorys';
 import FilterByPrice from 'page/Product/components/Filters/FilterByPrice/FilterByPrice';
 import ProductSort from 'page/Product/components/Filters/productSort/ProductSort';
@@ -7,7 +8,10 @@ import Loading from 'page/Product/components/Loading/Loading';
 import Product from 'page/Product/components/Product/Product';
 import queryString from 'query-string';
 import { useEffect, useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.scss';
 
 ListProduct.propTypes = {};
@@ -19,6 +23,7 @@ const TRUTH_TABLE = {
 
 function ListProduct(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -63,6 +68,10 @@ function ListProduct(props) {
       }
     })();
   }, [queryParams]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handlePagination = (e, newPage) => {
     // console.log(newPage);

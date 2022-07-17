@@ -8,12 +8,14 @@ import Seach from 'components/Search/Search';
 import { cartItemCountSelector } from 'features/Cart/Selectors';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 Header.propTypes = {};
 
 function Header(props) {
   const [showMenu, setShowMenu] = useState(false);
   const cartCount = useSelector(cartItemCountSelector);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const history = useHistory();
   const location = useLocation();
@@ -39,8 +41,14 @@ function Header(props) {
       pathname: '/cart',
     });
   };
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      setScrollPosition(window.scrollY);
+      console.log(window.scrollY);
+    });
+  }, []);
   return (
-    <header className="header">
+    <header className={scrollPosition > 50 ? 'header stick' : 'header'}>
       <div className="container">
         <div className="row  align-item-center header__row">
           <div

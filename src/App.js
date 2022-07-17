@@ -7,12 +7,14 @@ import FeatureCart from 'features/Cart';
 import Home from 'page/Home';
 import ProductPage from 'page/Product';
 import { Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <div className="app">
       <Header />
       <div className="main">
+        <ToastContainer />
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/home" component={Home} />

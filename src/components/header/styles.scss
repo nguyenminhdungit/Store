@@ -9,6 +9,16 @@
     background-color: #3968f7;
     color: #fff;
     padding: 10px 20px;
+   
+   &.stick{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1111;
+    animation: scrollanimation 0.5s  linear;
+  }
+
     &__logo{
       margin-right: 20px;
        font-size: 40px;
@@ -118,6 +128,17 @@
       border-radius: 5px;
   }
 
+}
+
+//animation
+@keyframes scrollanimation{
+  from{
+    top: -50%;
+    opacity: 0;
+  }
+  to{
+    top: 0%;
+  }
 }
 
 //respose

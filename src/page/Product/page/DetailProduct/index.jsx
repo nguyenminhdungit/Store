@@ -4,6 +4,7 @@ import useProduct from 'page/Product/customhook/useProduct';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { formatPrice } from 'util';
 import AddToCart from './AddToCart.jsx/AddToCart';
 import './styles.scss';
@@ -38,7 +39,9 @@ function DetailProduct() {
       product,
       quantity: quantity,
     });
-
+    toast.success('them vao gio hang thanh cong!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
     // console.log(action);
     dispacth(action);
   };
