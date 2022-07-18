@@ -7,6 +7,9 @@ import InputFiled from 'components/Form-control/InputFilter/InputFiled';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import PasswordFiled from 'components/Form-control/passwordFiled/PasswordFiled';
+import { useDispatch } from 'react-redux';
+import { useSnackbar } from 'notistack';
+import { register } from '../authSlice';
 
 Register.propTypes = {};
 
@@ -36,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const schema = yup.object().shape({
-  name: yup
+  fullName: yup
     .string()
     .matches(/[a-zA-Z][a-zA-Z ]{2,}/, 'Must Contain 2 Characters')
     .required('please enter your name'),
@@ -57,9 +60,12 @@ const schema = yup.object().shape({
 
 function Register(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+
   const form = useForm({
     defaultValues: {
-      name: '',
+      fullName: '',
       email: '',
       password: '',
       retypePassword: '',
@@ -67,8 +73,25 @@ function Register(props) {
     resolver: yupResolver(schema),
   });
 
-  const handleOnSubmit = (filed) => {
-    console.log(filed);
+  const showError = (error) => {
+    enqueueSnackbar(error, { variant: 'error' });
+  };
+  const showSuccess = () => {
+    enqueueSnackbar('register Successfully', { variant: 'success', autoHideDuration: 3000 });
+  };
+  //sally@gmail.com 1234Abc@
+  const handleOnSubmit = async (value) => {
+    try {
+      value.username = value.email;
+      const action = register(value);
+      await dispatch(action).unwrap();
+      const { onSubmit } = props;
+      onSubmit();
+      showSuccess();
+    } catch (error) {
+      showError(error.message);
+      console.log('fail to register:', error.message);
+    }
   };
 
   return (
@@ -80,7 +103,7 @@ function Register(props) {
         register
       </Typography>
       <form onSubmit={form.handleSubmit(handleOnSubmit)}>
-        <InputFiled name="name" form={form} label="fullname" />
+        <InputFiled name="fullName" form={form} label="fullName" />
         <InputFiled name="email" form={form} label="email" />
         <PasswordFiled name="password" form={form} label="password" />
         <PasswordFiled name="retypePassword" form={form} label="retypePassword" />

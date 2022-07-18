@@ -273,7 +273,7 @@ function Header(props) {
               </>
             ) : (
               <>
-                <Register />
+                <Register onSubmit={handleClose} />
                 <Box>
                   <Button color="primary" onClick={() => setMode(MODE.LOGIN)}>
                     Already have an account. login here
