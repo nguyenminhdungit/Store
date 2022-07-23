@@ -1,8 +1,10 @@
 .productlist{
     margin: 20px 0;
+
    
    &__row{
     gap: 10px;
+    align-items: flex-start;
    }
 
    &__left,&__right{
@@ -13,6 +15,10 @@
    
     &__left{
         width: 300px;
+        position: sticky;
+        top: 100px;
+        left: 0;
+        z-index: 111;
         // display: none;
         &--active{
             display: none;
@@ -34,6 +40,7 @@
             }
         }
     }
+    
     
     &__right{
         position: relative;
@@ -96,6 +103,7 @@
                 display: block;
             }
         }
+        
         &__left.active{
             left: 0;
         }

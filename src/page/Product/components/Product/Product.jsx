@@ -9,27 +9,30 @@ import './styles.scss';
 import { addToCart } from 'features/Cart/CartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSnackbar } from 'notistack';
 
 Product.propTypes = {};
 
 function Product({ product = {} }) {
   const dispatch = useDispatch();
-  // console.log(randomPhoto());
+  const history = useHistory();
   const thumbnail = product.thumbnail ? `${baseHost}${product.thumbnail?.url}` : `${randomPhoto()}`;
   const originalPrice = formatPrice(product.originalPrice);
   const salePrice = formatPrice(product.salePrice);
+  const { enqueueSnackbar } = useSnackbar();
 
-  const history = useHistory();
+  const showSuccess = () => {
+    enqueueSnackbar('add to cart Successfully', { variant: 'success', autoHideDuration: 3000 });
+  };
   const handleClickAddToCart = () => {
     const action = addToCart({
       id: product.id,
       product,
       quantity: 1,
     });
-    toast.success('them vao gio hang thanh cong!', {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+
     dispatch(action);
+    showSuccess();
   };
 
   const handleClickView = () => {

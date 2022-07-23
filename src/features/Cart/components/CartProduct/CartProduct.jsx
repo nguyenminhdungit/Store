@@ -7,6 +7,14 @@ import './styles.scss';
 import FormSetQuantity from '../FormSetQuantity/FormSetQuantity';
 import { useDispatch } from 'react-redux';
 import { removeFromCart, setQuantity } from 'features/Cart/CartSlice';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 
 CartProduct.propTypes = {
   product: PropTypes.object,
@@ -21,12 +29,23 @@ function CartProduct({ product = {}, quantity = 1 }) {
   const salePrice = formatPrice(product.salePrice);
   const totalPrice = formatPrice(product.salePrice * quantity);
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const onSubmit = ({ quantity }) => {
     const action = setQuantity({
       id: product.id,
       quantity,
     });
     dispacth(action);
+    handleClose();
   };
   const onClickRemove = () => {
     dispacth(removeFromCart(product.id));
@@ -50,9 +69,25 @@ function CartProduct({ product = {}, quantity = 1 }) {
       </div>
       <div className="cart__remove">
         <span>
-          <i className="fa-solid fa-trash-can" onClick={onClickRemove}></i>
+          <i className="fa-solid fa-trash-can" onClick={handleClickOpen}></i>
         </span>
       </div>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="draggable-dialog-title">
+        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+          delete
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>you want remove product to cart</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={onClickRemove} color="primary">
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

@@ -152,16 +152,25 @@ function Header(props) {
     });
   };
 
-  useEffect(() => {
-    document.addEventListener('scroll', () => {
-      setScrollPosition(window.scrollY);
+  const handleLogin = () => {
+    setMode(MODE.LOGIN);
+    handleClickOpen();
+  };
+  const handleRegister = () => {
+    setMode(MODE.REGISTER);
+    handleClickOpen();
+  };
 
-      // console.log(window.scrollY);
-    });
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener('scroll', () => {
+  //     setScrollPosition(window.scrollY);
+
+  //     // console.log(window.scrollY);
+  //   });
+  // }, []);
 
   return (
-    <header className={scrollPosition > 50 ? 'header stick' : 'header'}>
+    <header className="header">
       <div className="container">
         <div className="row  align-item-center header__row">
           <div
@@ -212,22 +221,10 @@ function Header(props) {
             )}
             {!isLoggedIn && (
               <>
-                <a
-                  className="header__nav-item"
-                  onClick={() => {
-                    setMode(MODE.LOGIN);
-                    handleClickOpen();
-                  }}
-                >
+                <a className="header__nav-item" onClick={handleLogin}>
                   Login
                 </a>
-                <a
-                  className="header__nav-item"
-                  onClick={() => {
-                    setMode(MODE.REGISTER);
-                    handleClickOpen();
-                  }}
-                >
+                <a className="header__nav-item" onClick={handleRegister}>
                   register
                 </a>
               </>

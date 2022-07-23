@@ -125,7 +125,7 @@ function ListProduct(props) {
       search: queryString.stringify(filter),
     });
   };
-
+  console.log('listpage`');
   return (
     <div className="productlist">
       <div className="container">
@@ -137,16 +137,18 @@ function ListProduct(props) {
                 <i className="fa-solid fa-angle-right"></i>
               </span>
             </div>
-            <div className="productlist__category">
-              <FilterByCategorys
-                onChangeCategory={handleChangeCategory}
-                categoryId={+queryParams.category}
-              />
+            <div className="productlist__box">
+              <div className="productlist__category">
+                <FilterByCategorys
+                  onChangeCategory={handleChangeCategory}
+                  categoryId={+queryParams.category}
+                />
+              </div>
+              <div className="productlist__price">
+                <FilterByPrice onChangeAboutPrice={handleChangePrice} queryParams={queryParams} />
+              </div>
+              <div className="productlist__services"></div>
             </div>
-            <div className="productlist__price">
-              <FilterByPrice onChangeAboutPrice={handleChangePrice} queryParams={queryParams} />
-            </div>
-            <div className="productlist__services"></div>
           </div>
           {/* right */}
           <div className="productlist__right">

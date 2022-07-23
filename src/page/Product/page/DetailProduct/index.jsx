@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { formatPrice } from 'util';
 import AddToCart from './AddToCart.jsx/AddToCart';
 import './styles.scss';
+import { useSnackbar } from 'notistack';
 
 const randomImg = [
   'https://cdn.tgdd.vn/Products/Images/42/262402/Samsung-Galaxy-A13-cam-thumb-600x600.jpg',
@@ -23,27 +24,29 @@ function DetailProduct() {
   } = useRouteMatch();
 
   const { loading, product } = useProduct(productId);
+
   const arrImg = [
     ...randomImg,
     product.thumbnail ? `${baseHost}${product.thumbnail?.url}` : `${randomPhoto()}`,
   ];
-  // console.log(arrImg);
+
   const [thumbnail, setThumbnail] = useState(() => arrImg[arrImg.length - 1]);
-  // console.log(thumbnail);
   const originalPrice = formatPrice(product.originalPrice);
   const salePrice = formatPrice(product.salePrice);
 
+  const { enqueueSnackbar } = useSnackbar();
+  const showSuccess = () => {
+    enqueueSnackbar('add to cart Successfully', { variant: 'success', autoHideDuration: 3000 });
+  };
   const handleAddToCart = ({ quantity }) => {
     const action = addToCart({
       id: product.id,
       product,
       quantity: quantity,
     });
-    toast.success('them vao gio hang thanh cong!', {
-      position: toast.POSITION.TOP_RIGHT,
-    });
     // console.log(action);
     dispacth(action);
+    showSuccess();
   };
 
   return (

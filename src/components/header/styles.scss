@@ -3,20 +3,22 @@
 
 .header{
   // position: fixed;
-  // top: 0;
-  // left: 0;
+  top: 0;
+  left: 0;
+  z-index: 1111;
   // width: 100%;
+    position: sticky;
     background-color: #3968f7;
     color: #fff;
     padding: 10px 20px;
    
    &.stick{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1111;
-    animation: scrollanimation 0.5s  linear;
+    // position: sticky;
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+    // z-index: 1111;
+    // animation: scrollanimation 0.5s  linear;
   }
 
     &__logo{
